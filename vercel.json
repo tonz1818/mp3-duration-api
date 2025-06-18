@@ -2,7 +2,8 @@
   "version": 2,
   "functions": {
     "api/get-duration.py": {
-      "runtime": "python3.9"
+      "memory": 1024,
+      "maxDuration": 10
     }
   }
 }

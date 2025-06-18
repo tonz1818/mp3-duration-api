@@ -1,2 +1,2 @@
 mutagen==1.46.0
-werkzeug==1.0.1
+werkzeug==2.0.1
