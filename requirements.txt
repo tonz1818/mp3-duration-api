@@ -1,1 +1,2 @@
-mutagen
+mutagen==1.46.0
+werkzeug==1.0.1
