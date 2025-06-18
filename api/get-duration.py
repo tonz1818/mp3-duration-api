@@ -5,25 +5,17 @@ import json
 
 def handler(request):
     if request.method == "POST":
-        return {
-            "statusCode": 200,
-            "headers": {"Content-Type": "application/json"},
-            "body": json.dumps({
-                "duration_seconds": 100,
-                "duration_formatted": "1m 40s"
-            })
-        }
         try:
-            # Get the file from the request
-            file = request.files.get('file')
-            if not file:
+            # Get the raw body from the request
+            content_length = int(request.headers.get('Content-Length', 0))
+            if content_length == 0:
                 return {
                     "statusCode": 400,
                     "body": json.dumps({"error": "No file uploaded"})
                 }
 
-            # Read the file content
-            file_content = file.read()
+            # Read the raw body
+            file_content = request.body
             
             # Process the MP3 file
             audio = MP3(BytesIO(file_content))

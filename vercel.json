@@ -1,3 +1,7 @@
 {
-  "redirects": [{ "source": "/", "destination": "/api" }]
+  "version": 2,
+  "routes": [
+    { "src": "/api/get-duration", "dest": "/api/get-duration.py" },
+    { "src": "/(.*)", "dest": "/api/get-duration.py" }
+  ]
 }
