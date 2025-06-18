@@ -1,18 +1,8 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/get-duration.py",
-      "use": "@vercel/python@3.0.0",
-      "config": {
-        "runtime": "python3.9"
-      }
+  "functions": {
+    "api/get-duration.py": {
+      "runtime": "python3.9"
     }
-  ],
-  "routes": [
-    {
-      "src": "/api/get-duration",
-      "dest": "/api/get-duration.py"
-    }
-  ]
+  }
 }
