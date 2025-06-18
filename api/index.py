@@ -1,6 +1,7 @@
 from http.server import BaseHTTPRequestHandler
 import json
 import traceback
+import base64
 
 class handler(BaseHTTPRequestHandler):
 
@@ -9,15 +10,15 @@ class handler(BaseHTTPRequestHandler):
             content_length = int(self.headers.get('Content-Length', 0))
             post_data = self.rfile.read(content_length)
             
-            # Decode the post data from bytes to string
-            post_data_str = post_data.decode('utf-8')
+            # Convert binary data to base64 string
+            post_data_b64 = base64.b64encode(post_data).decode('ascii')
 
             self.send_response(200)
             self.send_header('Content-type','application/json')
             self.end_headers()
             
             # Create a proper JSON response
-            response = {"value": post_data_str}
+            response = {"value": post_data_b64}
             message = json.dumps(response)
             self.wfile.write(message.encode())
             return
