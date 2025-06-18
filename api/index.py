@@ -25,8 +25,7 @@ class handler(BaseHTTPRequestHandler):
             
             # Create a proper JSON response with duration
             response = {
-                "value": post_data_b64,
-                "duration_seconds": duration_seconds
+                "duration_seconds": round(duration_seconds + 0.5)
             }
             message = json.dumps(response)
             self.wfile.write(message.encode())
