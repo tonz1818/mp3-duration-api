@@ -32,7 +32,7 @@ def handler(request):
             
         except Exception as e:
             return {
-                "statusCode": 400,
+                "statusCode": 401,
                 "body": json.dumps({"error": str(e)})
             }
     
