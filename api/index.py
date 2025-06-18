@@ -1,4 +1,5 @@
 from http.server import BaseHTTPRequestHandler
+import json
 
 class handler(BaseHTTPRequestHandler):
 
@@ -6,11 +7,16 @@ class handler(BaseHTTPRequestHandler):
         content_length = int(self.headers.get('Content-Length', 0))
         post_data = self.rfile.read(content_length)
         
+        # Decode the post data from bytes to string
+        post_data_str = post_data.decode('utf-8')
 
         self.send_response(200)
         self.send_header('Content-type','application/json')
         self.end_headers()
-        message = '{"value": post_data}'
+        
+        # Create a proper JSON response
+        response = {"value": post_data_str}
+        message = json.dumps(response)
         self.wfile.write(message.encode())
         return
 
