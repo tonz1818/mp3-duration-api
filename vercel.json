@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "api/get-duration.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/api/get-duration", "dest": "api/get-duration.py" }
+  ]
+}
